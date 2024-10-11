@@ -1,0 +1,274 @@
+﻿<UserControl x:Class="DevTools.MVVM.View.DevTool"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DevTools.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="Creazione Soluzione"
+           Foreground="White"
+           FontSize="20"
+           HorizontalAlignment="Left"
+           Margin="0,0,0,20"/>
+        <StackPanel Orientation="Horizontal">
+            <Border Width="600"
+                    Height="200"
+                    Padding="0,10,0,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#004953" Offset="0.0"/>
+                        <!-- Dark Teal -->
+                        <GradientStop Color="#002D40" Offset="1"/>
+                        <!-- Midnight Blue -->
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                           RadiusY="10"
+                           Rect="0,0,600,200"/>
+                </Border.Clip>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Versione da usare: "
+                               Foreground="White"
+                               FontSize="14"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,0" Width="116"/>
+
+                    <StackPanel Grid.Row="1"
+                                Margin="10,0,0,0">
+                        <RadioButton Content="Exp" 
+                                     IsChecked="{Binding SelectedVersion, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Exp}"
+                                     Style="{StaticResource BusVersionRadio}"/>
+                        <RadioButton Content="ExpRTM" 
+                                     IsChecked="{Binding SelectedVersion, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=ExpRTM}"
+                                     Style="{StaticResource BusVersionRadio}"/>
+                        <RadioButton Content="Sr8" 
+                                     IsChecked="{Binding SelectedVersion, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Sr8}"
+                                     Style="{StaticResource BusVersionRadio}"/>
+                        <RadioButton Content="Sr7" 
+                                     IsChecked="{Binding SelectedVersion, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Sr7}"
+                                     Style="{StaticResource BusVersionRadio}"/>
+                        <RadioButton Content="Sr6" 
+                                     IsChecked="{Binding SelectedVersion, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Sr6}"
+                                     Style="{StaticResource BusVersionRadio}"/>
+                    </StackPanel>
+
+
+                    <TextBlock Text="Indicare i progetti da usare nella Solutione: "
+                               Foreground="White"
+                               FontSize="14"
+                               HorizontalAlignment="Left"
+                               Grid.Column="1"
+                               Margin="10,0,0,0" Width="268"/>
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="1"
+                                Orientation="Vertical">
+                        <TextBox VerticalAlignment="Top"
+                                 AcceptsReturn="True"
+                                 Height="100"
+                                 Text="{Binding SolutionsTxt}"
+                                 Style="{StaticResource ModernTextbox}" 
+                                 Tag="Inserire i nomi dei progetti separati da ; &#x0a;Es. BNVEBOLL;BNORGSOR" 
+                                 Margin="10,0,10,0"/>
+                        <CheckBox Margin="10,10,10,0"
+                                  Content="Scrivi file CFG"
+                                  Foreground="White"
+                                  IsChecked="{Binding SetCfgDebugger}"
+                                  Style="{StaticResource ToggleStyle}"
+                                  />
+                    </StackPanel>
+                    <Button Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Margin="10"
+                            Padding="5"
+                            Content="Crea Soluitione"
+                            Foreground="White"
+                            Background="DodgerBlue"
+                            BorderThickness="0"
+                            Command="{Binding CreateSolution}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="Width" Value="140"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+        <TextBlock Text="Creazuibe Cfg"
+               Foreground="White"
+               FontSize="20"
+               HorizontalAlignment="Left"
+               Margin="0,0,0,20"/>
+        <StackPanel Orientation="Horizontal">
+            <Border Width="600"
+            Height="150"
+                    Padding="0,10,0,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#1B4F72" Offset="0.0"/>
+                        <!-- Blue-Gray -->
+                        <!-- Dark Cyan -->
+                        <GradientStop Color="#566573" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                   RadiusY="10"
+                   Rect="0,0,600,150"/>
+                </Border.Clip>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Indica Arcproc: "
+                       Foreground="White"
+                       FontSize="14"
+                       HorizontalAlignment="Left"
+                       Margin="10,0,0,0" Width="116"/>
+
+                    <TextBox Text="{Binding ArcprocName}"
+                             Style="{StaticResource ModernTextbox}" 
+                             Grid.Column="1"
+                             Tag="Es. ARCPROC" 
+                             Margin="10,2,10,2"/>
+
+
+                    <TextBlock Text="Indica info Server: "
+                       Foreground="White"
+                       FontSize="14"
+                       HorizontalAlignment="Left"
+                       Grid.Row="1"
+                       Margin="10,0,0,0" Width="268"/>
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Text="{Binding ArcProcServerName}"
+                                 Style="{StaticResource ModernTextbox}" 
+                                 Grid.Row="1"
+                                 Tag="Server: Es. FTP-SQL" 
+                                 Margin="10,2,2,2"/>
+                        <TextBox Text="{Binding ArcProcServerName}"
+                                 Style="{StaticResource ModernTextbox}" 
+                                 Grid.Row="1"
+                                 Grid.Column="1"
+                                 Tag="Utente: Es. sa" 
+                                 Margin="2,2,5,2"/>
+                        <TextBox Text="{Binding ArcProcServerName}"
+                                 Style="{StaticResource ModernTextbox}" 
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 Tag="Pass.: Es. nts" 
+                                 Margin="2,2,10,2"/>
+                    </Grid>
+
+                    <TextBlock Text="Indica Nome Cfg: "
+                               Foreground="White"
+                               FontSize="14"
+                               HorizontalAlignment="Left"
+                               Grid.Row="2"
+                               Margin="10,0,0,0" Width="268"/>
+
+                    <TextBox Text="{Binding CfgName}"
+                             Style="{StaticResource ModernTextbox}" 
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             Tag="Es. Business_cfg" 
+                             Margin="10,2,10,2"/>
+
+                    <CheckBox Margin="10,0,10,0"
+                              Content="Elimina GDPR"
+                              Foreground="White"
+                              Grid.Row="3"
+                              IsChecked="{Binding DeleteGdpr}"
+                              Style="{StaticResource ToggleStyle}"
+                              />
+
+                    <Button Grid.Column="1"
+                            Grid.Row="3"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Padding="5"
+                            Content="Crea Cfg e Connessione"
+                            Foreground="White"
+                            Background="DodgerBlue"
+                            BorderThickness="0"
+                            Command="{Binding CreateCfgAndConnection}" 
+                            Margin="0,0,10,10" Grid.RowSpan="2">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="Width" Value="140"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="3"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Padding="5"
+                            Content="Crea Cfg"
+                            Foreground="White"
+                            Background="DodgerBlue"
+                            BorderThickness="0"
+                            Command="{Binding CreateCfg}" 
+                            Margin="0,0,165,10">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="Width" Value="140"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+        <Button Grid.Column="1"
+                Grid.Row="3"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Padding="5"
+                Content="Crea Sln Completa"
+                Foreground="White"
+                Background="DodgerBlue"
+                BorderThickness="0"
+                Command="{Binding CreateComplete}" 
+                Margin="450,10,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                    <Setter Property="Width" Value="140"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="DevTools.MVVM.View.HoveView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DevTools.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Text="DevTools"
+                   Foreground="White"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,0,0,10">
+            <Border Width="400"
+                    Height="200">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#004953" Offset="0.0"/>
+                        <!-- Dark Teal -->
+                        <GradientStop Color="#002D40" Offset="1"/>
+                        <!-- Midnight Blue -->
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,400,200"/>
+                </Border.Clip>
+                <Grid>
+                    <StackPanel>
+                        <TextBlock Text="Word Leader"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Width="200" 
+                    Height="200"
+                    CornerRadius="10"
+                    Margin="45,0,0,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#1B4F72" Offset="0.0"/>
+                        <!-- Dark Cyan -->
+                        <GradientStop Color="#566573" Offset="1"/>
+                        <!-- Blue-Gray -->
+                    </LinearGradientBrush>
+                </Border.Background>
+
+            </Border>
+        </StackPanel>
+        <StackPanel>
+
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Margin" Value="15,0,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            
+            <TextBlock Text="Programmi"
+                    Foreground="White"
+                    FontSize="20"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <Border Width="150" 
+                        Height="150"
+                        CornerRadius="10"
+                        Margin="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#013220" Offset="0.0"/>
+                            <!-- Dark Green -->
+                            <GradientStop Color="#000000" Offset="1"/>
+                            <!-- Black -->
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <Border Width="150" 
+                        Height="150"
+                        CornerRadius="10">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#556B2F" Offset="0.0"/>
+                            <!-- Olive Green -->
+                            <GradientStop Color="#000000" Offset="1"/>
+                            <!-- Black -->
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <Border Width="150" 
+                        Height="150"
+                        CornerRadius="10">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#355E3B" Offset="0.0"/>
+                            <!-- Hunter Green -->
+                            <GradientStop Color="#0A0A0A" Offset="1"/>
+                            <!-- Jet Black -->
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <Border Width="150" 
+                        Height="150"
+                        CornerRadius="10">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#2E8B57" Offset="0.0"/>
+                            <!-- Dark Sea Green -->
+                            <GradientStop Color="#000000" Offset="1"/>
+                            <!-- Black -->
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

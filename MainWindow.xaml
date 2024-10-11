@@ -1,0 +1,77 @@
+﻿<Window x:Class="DevTools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DevTools" 
+        xmlns:viewModel="clr-namespace:DevTools.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="600" Width="920"
+        WindowStyle="none"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border Background="#272537"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Width="200" 
+                   Height="75" 
+                   Source="pack://siteoforigin:,,,/Images/DevTools_White_small.png"
+                   HorizontalAlignment="Left"
+                   MouseDown="DragWindow"/>
+            <!--<TextBlock Text="DevTools"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="22"
+                       Margin="20,0,0,0"/>-->
+            <StackPanel Grid.Row="1">
+
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+                <RadioButton Content="DevTools"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding DevToolViewCommand}"/>
+                <RadioButton Content="Rive"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                        MouseDown="DragWindow"
+                        Background="Transparent">
+                <!--<TextBox Width="250"
+                         Height="40"
+                         VerticalContentAlignment="Center" 
+                         HorizontalAlignment="Left"
+                         Margin="5"
+                         Grid.Column="1"
+                         Style="{StaticResource ModernTextbox}"/>-->
+            </StackPanel>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Border>
+</Window>
